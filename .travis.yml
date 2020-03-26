@@ -14,8 +14,11 @@ after_success:
     - docker build -t schuimax/multi-server ./server
     - docker build -t schuimax/multi-worker ./worker
 
+# login to docker CLI    
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
+
+# push prod images to docker hub
     - docker push schuimax/multi-client
     - docker push schuimax/multi-nginx
     - docker push schuimax/multi-server
